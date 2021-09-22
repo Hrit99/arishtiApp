@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
   
 const express = require('express')
 const morgan = require('morgan')
-const bodyParser = require('body-parser')
 const userRoute = require('./routes/userRoute')
 
 var mongoDB = 'mongodb+srv://hritik:hritikpassword@cluster0.jtmil.mongodb.net/users?retryWrites=true&w=majority';
@@ -25,8 +24,6 @@ db.on('connection', (stream) => {
   const app = express()
 
   app.use(morgan('dev'))
-  app.use(bodyParser.urlencoded({extended:true}))
-  app.use(bodyParser.json())
 
   const port = process.env.PORT||3000
 
