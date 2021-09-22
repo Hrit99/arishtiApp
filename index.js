@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
-const userRoute = require('../backendApp/routes/userRoute')
+const userRoute = require('./routes/userRoute')
 
 var mongoDB = 'mongodb+srv://hritik:hritikpassword@cluster0.jtmil.mongodb.net/users?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
