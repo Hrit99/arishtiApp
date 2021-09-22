@@ -4,6 +4,7 @@ const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const userRoute = require('./routes/userRoute')
+const credRoute = require('./routes/credRoute')
 
 var mongoDB = 'mongodb+srv://hritik:hritikpassword@cluster0.jtmil.mongodb.net/users?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -34,3 +35,4 @@ app.listen(process.env.PORT || 3000, () => {
 })
 
 app.use('/user', userRoute)
+app.use('/cred', credRoute)
