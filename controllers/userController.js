@@ -16,6 +16,22 @@ const index = (req, res, next) => {
         })
 }
 
+const deleteit = (req, res, next) => {
+
+    user.findById(req.body.id).remove().then(response => {
+        console.log("jj")
+        res.json({
+            deleted: true
+        })
+    })
+    .catch(error => {
+        res.json({
+            deleted: false
+        })
+    })
+}
+
+
 function storeDetails(req, res, validationResult) {
     console.log(req.body.contact)
     const errors = validationResult(req);
@@ -30,11 +46,15 @@ function storeDetails(req, res, validationResult) {
          contact: req.body.contact,
          address: req.body.address
       })
-  
-      newUser.save()
+      var id = " ";
+      newUser.save(function(err,usr) {
+        console.log(usr.id);
+        id = usr.id;
+     })
           .then(response => {
               res.json({
-                  stored: true
+                  stored: true,
+                  id: id
               })
           })
           .catch(error => {
@@ -56,5 +76,5 @@ function storeDetails(req, res, validationResult) {
     //     })
 }
 module.exports = {
-    index, storeDetails
+    index, storeDetails, deleteit
 }

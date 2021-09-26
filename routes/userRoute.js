@@ -9,5 +9,6 @@ router.post('/store', [body('contact').isMobilePhone()], (req, res) => {
     const errors = validationResult(req);
     console.log(errors)
     userController.storeDetails(req, res, validationResult); })
+router.post('/delete', userController.deleteit)
 
 module.exports = router
