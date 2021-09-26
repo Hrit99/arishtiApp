@@ -47,21 +47,37 @@ function storeDetails(req, res, validationResult) {
          address: req.body.address
       })
       var id = " ";
+      console.log("jnfd");
       newUser.save(function(err,usr) {
+          if(err)
+          {
+              console.log(err);
+              res.json({
+                stored: false
+            })
+          }
+          else{
         console.log(usr.id);
         id = usr.id;
-     })
-          .then(response => {
-              res.json({
-                  stored: true,
-                  id: id
-              })
-          })
-          .catch(error => {
-              res.json({
-                  stored: false
-              })
-          })
+        res.json({
+            stored: true,
+            id: id
+        })
+          }
+
+     });
+
+        //   .then(response => {
+            //   res.json({
+            //       stored: true,
+            //       id: id
+            //   })
+        //   })
+        //   .catch(error => {
+            //   res.json({
+            //       stored: false
+            //   })
+        //   })
     // user.find()
     //     .then(response => {
     //         console.log("jj")
